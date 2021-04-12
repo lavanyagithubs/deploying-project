@@ -1,0 +1,96 @@
+<div class="container">
+    <div >
+       <button class="btn btn-danger" style="float: right;" (click)="onLogout()">Logout</button>
+       <button class="btn btn-danger"(click)="sendSub()">subscribe</button>
+   </div>
+   <div class="row mt-5">
+      <div class="text-center mb-2" >
+         <h2>Welcome, {{username}}</h2>
+       </div>
+      
+       <div class="mb-5">
+         
+           
+           <input type="text" class="form-control" [(ngModel)]="filterTerm" placeholder="search for your notes" style="border-radius: 40px;">
+
+  
+       </div>
+       <div class="col-3"></div>
+       <div class="col-6">
+           <div class="card">
+               <form #ref="ngForm" (ngSubmit)="ref.form.valid && onSubmit(ref)">
+                   <input type="text" id="title" name="title" class="form-control mt-3" ngModel placeholder="title" required>
+                   <input type="text" id="note" name="note" class="form-control" ngModel placeholder="text" required>
+                   <button type="submit" class="btn btn-primary mt-3">Add notes</button>
+              </form>
+           </div>
+         
+       </div>
+       <div class="col-3"></div>
+   </div>
+  
+   <div class="container mt-5">
+ 
+   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3">
+       
+       <div *ngFor="let n of notes | filter:filterTerm ">
+           <div class="col">
+               <div class="card  mb-3">
+                   <div class="card-header">
+                       <h5 class="card-title">
+                           {{ n.title }}
+                       </h5>
+                   </div>
+                   <div class="card-body">
+                    
+                       <h5 class="card-title">
+                            {{n.note }}
+                       </h5>
+
+                      
+                   </div>
+
+                   <div class="card-footer">
+                       
+                                               <!-- Button trigger modal -->
+                       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="gotoModal(n)" >
+                           <i class="far fa-edit"></i>
+                       </button>
+                       
+                       <!-- Modal -->
+                       <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                           <div class="modal-dialog modal-dialog-centered">
+                           <div class="modal-content">
+                               <div class="modal-header">
+                                   <input type="text" class="form-control m-2 inp1" name="title" placeholder="enter title" [(ngModel)]="update.title">
+                               </div>
+                             
+                               <div class="modal-body">
+                                  
+                                  
+                                   <input type="text" class="form-control m-2 inp1" name="note" placeholder="enter notes" [(ngModel)]="update.note">
+                               </div>
+
+                               
+                               <div class="modal-footer">
+                                   <button type="button" class="btn btn-success" (click)="save()"  data-bs-dismiss="modal">Save</button>
+
+                               </div>
+                           </div>
+                           
+                           </div>
+                       </div>
+                       
+                    
+                       <div class="btn btn-success " style="margin-left: 35%;"  ><i class="fas fa-stopwatch"></i></div>
+                    <div class="btn btn-danger" style="float: right;" (click)="onDelete(n.id)"><i class="fas fa-trash-alt"></i></div>
+                   </div>
+
+             
+               
+               </div> 
+           </div>
+       </div>
+   </div>
+</div>
+</div>

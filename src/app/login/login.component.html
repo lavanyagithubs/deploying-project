@@ -1,0 +1,52 @@
+
+<div style="background-image: url('https://img.freepik.com/free-vector/worldwide-connection-blue-background-illustration-vector_53876-61764.jpg?size=626&ext=jpg&ga=GA1.2.855662366.1617148800'); background-size: cover;">
+    <div class="row">
+    <h1 style="text-align: center; margin-top: 50px;">Welcome to Login Page</h1>
+<div class="container-fluid">
+<div class="row mt-5" style="font-family: cursive;">
+    <div class="col-md-4 col-sm-2"></div>
+    <div class="col-md-4 col-sm-8">
+
+
+            <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+                
+                <img src="https://zohowebstatic.com/sites/default/files/ogimage/notebook-logo.png" width="10%" height="10%">
+                <h2>Login</h2>
+                <h4>to access Notebook</h4>
+                <br><br>
+
+                <form class="form row g-3 "     [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <input type="text" name="username" id="" class="form-control" placeholder="Enter your Username" formControlName="username">
+                    <p style="color: red;" *ngIf="loginForm.get('username').hasError('required')&& !loginForm.get('username').untouched">Name is required**</p><br>
+
+
+                    <input type="password" name="password" id="" class="form-control" placeholder="Enter your Password" formControlName="password">
+                    <p style="color: red;" *ngIf="loginForm.get('password').hasError('required')&& !loginForm.get('password').untouched">Password is required**</p><br>
+
+                    <div class="col-6">
+                        <button class="btn btn-success" type="submit" >Login</button>
+                    </div>
+                    <br>
+                    <a routerLink="" (click)="moveToPasswordReset()">Forget password?</a>
+
+                    <div class="text-center mt-5">
+                        <h5>Don't have an account?</h5>
+                        <button class="btn btn-primary"(click)="onChange()" >Register</button>
+                    </div>
+
+                </form>
+
+                    
+            </div>
+</div>
+<div class="col-md-4 col-sm-2">
+     
+</div>
+</div>
+</div>
+</div>
+<br><br><br><br>
+</div>
+
+
+
